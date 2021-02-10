@@ -68,13 +68,27 @@ end
 
 class BookInStock
 # YOUR CODE HERE
-  attr_accessor :isbn, :price
+  attr_reader :isbn, :price
   
   def initialize(isbn,price)
     if(isbn.empty? || price<=0)
-      raise ArgumentError.new("Arguement Error")
+      raise ArgumentError
     end
     @isbn=isbn
+    @price=price
+  end
+  
+  def isbn=(isbn)
+    if(isbn.empty?)
+      raise ArgumentError
+    end
+    @isbn=isbn
+  end
+  
+  def price=(price)
+    if(price<=0)
+      raise ArgumentError
+    end
     @price=price
   end
   
